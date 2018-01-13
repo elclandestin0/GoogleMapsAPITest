@@ -9,7 +9,6 @@ def fetchGeocodeLocation(input):
     h = httplib2.Http()
     response, content = h.request(url, 'GET')
     result = json.loads(content)
-    return result
-    # return result
-
-fetchGeocodeLocation("Dallas, Texas")
+    latitude = result['results'][0]['geometry']['location']['lat']
+    longitude = result['results'][0]['geometry']['location']['lng']
+    return (latitude, longitude)
